@@ -18,6 +18,8 @@ Autonomous Driving (AD) systems have made notable progress, but their performanc
 <img src="assets/CoReVLA_framework.png" width="1000">
 </div>
 
+* **HITL-based data collection in immersive simulation.** We collect visually grounded takeover data from the CAVE platform, enabling capture of failure cases in long-tail scenarios.
+* **DPO-based behavior refinement.** We apply Direct Preference Optimization to efficiently align the model with human intent using sparse but high-quality takeover data.
 
 ## TODO List 🔨
 - [x] Train and Eval Code 
@@ -30,8 +32,8 @@ Autonomous Driving (AD) systems have made notable progress, but their performanc
 
 ## Getting Started
 
-### STF datasets
 
+### Carla prepare
 ```
 git clone https://github.com/xiaomi-mlab/Orion.git
 cd ./ORION
@@ -43,13 +45,20 @@ pip install -r requirements.txt
 
 ```
 
-### Carla prepare
 
 
 
-## Results
+## Data Release
+### STF Datasets
+
+| Base Dataset  | Instruction Dataset     |      Size    |   Released  |
+|:-------------:|:-----------------------:|:------------:|:----------:|
+| [BDD,](https://bdd-data.berkeley.edu/)| [- Detailed description 3K](./data/BDD_train_data/BDD-Instruct-desc.json)<br>[- Complex reasoning 35K](./data/BDD_train_data/BDD-Instruct-reasoning.json)  |  figures with textual expalnation and description <br>(BDD-X: 6,970, BDD: 100K videos) | O |
+| [HAD HRI](https://usa.honda-ri.com/had)  | [- Detailed description 1K](./data/HAD_train_data/HAD-Instruct-description.json)<br>[- Complex reasoning 11K](./data/HAD_train_data/HAD-Instruct-reasoning.json)<br>[- Conversation 12K](./data/HAD_train_data/HAD-Instruct-conversation.json)  | 5,850 videos of 20 seconds long | O |
+| [LingoQA](https://usa.honda-ri.com/drama)   |  - | 17,785 scenario clips <br>with 2 seconds length | O |
 
 
+### DPO Datasets
 
 ## Citation
 If this work is helpful for your research, please consider citing:
