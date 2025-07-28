@@ -1,11 +1,15 @@
-<!-- # ORION: A Holistic End-to-End Autonomous Driving Framework by Vision-Language Instructed Action Generation -->
+<!-- # CoReVLA: A Dual-Stage End-to-End Autonomous Driving Framework for Long-Tail Scenarios via Collect-and-Refine -->
 
-<div align="center">
-  
-<img src="./assets/logo.png" width="20%">
-<h3>ORION: A Holistic End-to-End Autonomous Driving Framework <br>by Vision-Language Instructed Action Generation</h3>
-
+<div style="display: flex; align-items: center;">
+  <img src="./assets/CoReVLA_icon.png" alt="CoReVLA Icon" style="width: 60px; height: auto; margin-right: 15px;">
+  <div>
+    <h3 style="margin: 0;">
+      CoReVLA: A Dual-Stage End-to-End Autonomous Driving Framework<br>
+      for Long-Tail Scenarios via Collect-and-Refine
+    </h3>
+  </div>
 </div>
+
 
 
 <!-- ## Introduction -->
