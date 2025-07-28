@@ -15,17 +15,9 @@ Autonomous Driving (AD) systems have made notable progress, but their performanc
 
 ## Overview
 <div align="center">
-<img src="assets/images/CoReVLA_framework.png" width="1000">
+<img src="assets/CoReVLA_framework.png" width="1000">
 </div>
 
-## News
-**`[2025/06/26]`** ORION is accepted by **ICCV 2025**!
-
-`[2025/06/26]` ORION training code and dataset will be released, stay tuned！
-
-`[2025/04/10]` ORION inference code and checkpoint release.
-
-`[2025/03/26]` [ArXiv](https://arxiv.org/abs/2503.19755) paper release.
 
 ## Currently Supported Features
 
