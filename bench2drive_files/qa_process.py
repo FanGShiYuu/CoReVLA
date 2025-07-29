@@ -67,7 +67,7 @@ def generate_condition(anno_path, qid, special_state_str=None):
         ]:
             condition += "\"\"\"Notice that in the following questions, the parentheses after the object contain its ID and the name of the camera that can see it.\"\"\" "
 
-        if qid in [43]:  # TODO fangshiyuu modified it at 0711, cause vlms seems overly care speed match therefore to stop even great distance between ego and front
+        if qid in [43]:  # TODO modified it at 0711, cause vlms seems overly care speed match therefore to stop even great distance between ego and front
             condition = "Following these steps to make a driving decision: " +\
                     "1. Identify vehicles in the same lane as the ego vehicle by checking: (1) their speed direction relative to ego is within ±40° (0°=same direction), " +\
                     " (2) their lateral distance (left/right) is ≤2.5m. Output the vehicle's id in the same lane with ego vehicle \n" +\
@@ -130,7 +130,7 @@ def process_qa_by_qid(question, gt, qid):
         new_q = "Please predict the waypoint tokens for the next 4 seconds, " +\
                 "with one set every 0.5 seconds, " +\
                 "for a total of 8 sets of relative displacements."
-    if qid == 50:  # TODO fangshiyu modified
+    if qid == 50:  # TODO modified
         new_q = "Forget the above actors of other vehicles, only using the previously chose correct action from above questions (do not re-decide). Provide the appropriate behaviour for the ego vehicle according to the previously chose correct action," +\
             "Final output must consist of two keys:" +\
             "Direction key: 'FOLLOW_LANE'/'CHANGE_LANE_LEFT'/'CHANGE_LANE_RIGHT' (road navigation)," +\
