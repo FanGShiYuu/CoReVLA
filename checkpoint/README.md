@@ -1,7 +1,7 @@
 ---
 library_name: peft
 license: other
-base_model: /share/home/u22537/data/FSY/LLaMA-Factory/models/qwen2.5/Qwen/Qwen2.5-VL-7B-Instruct
+base_model: Qwen2.5-VL-7B-Instruct
 tags:
 - llama-factory
 - lora
@@ -16,7 +16,7 @@ should probably proofread and complete it, then remove this comment. -->
 
 # 20250712-all
 
-This model is a fine-tuned version of [/share/home/u22537/data/FSY/LLaMA-Factory/models/qwen2.5/Qwen/Qwen2.5-VL-7B-Instruct](https://huggingface.co//share/home/u22537/data/FSY/LLaMA-Factory/models/qwen2.5/Qwen/Qwen2.5-VL-7B-Instruct) on the HAD_train, the BDD_train and the lingoqa_action datasets.
+This model is a fine-tuned version of[Qwen2.5-VL-7B-Instruct on the HAD_train, the BDD_train and the lingoqa_action datasets.
 
 ## Model description
 
