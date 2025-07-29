@@ -191,9 +191,14 @@ Example of DPO dataset format
  ```
 
 ## Disclaimer 📌
-This repository is intended solely for anonymous peer review in accordance with the AAAI double-blind submission policy. The code, model checkpoints, and all associated materials are provided **for evaluation purposes only**.
+This repository is intended solely for anonymous peer review in accordance with the AAAI double-blind submission policy.  
+The code, model checkpoints, and all associated materials are provided **for evaluation purposes only**.
 
 They are **not officially released** and should **not be redistributed or reused** until the paper is formally accepted and the repository is migrated to a public, non-anonymous version.
+
+Additionally, due to repository size limitations, we only release the **LoRA weights** in this version.  
+The merged full model will be uploaded to Hugging Face after the paper is officially accepted.
+
 
 All rights reserved by the authors.
 
