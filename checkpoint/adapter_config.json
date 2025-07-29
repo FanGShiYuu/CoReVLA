@@ -1,7 +1,7 @@
 {
   "alpha_pattern": {},
   "auto_mapping": null,
-  "base_model_name_or_path": "/share/home/u22537/data/FSY/LLaMA-Factory/models/qwen2.5/Qwen/Qwen2.5-VL-7B-Instruct",
+  "base_model_name_or_path": "/Qwen/Qwen2.5-VL-7B-Instruct",
   "bias": "none",
   "fan_in_fan_out": false,
   "inference_mode": true,
