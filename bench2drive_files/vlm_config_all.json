@@ -24,7 +24,7 @@
     },
     "CONTROL_RATE": 1.0, 
     "MODEL_NAME": "Qwen2.5VL", 
-    "MODEL_PATH": "/share/home/u22537/data/FSY/LLaMA-Factory/models/Qwen2.5/Qwen2.5-VL-7B-Instruct-all", 
+    "MODEL_PATH": "/Qwen2.5/Qwen2.5-VL-7B-Instruct-all",  # the merged Qwen path or the original Qwen path, both fine
     "GPU_ID": 0, 
     "PORT": 7023,
     "IN_CARLA": true,
