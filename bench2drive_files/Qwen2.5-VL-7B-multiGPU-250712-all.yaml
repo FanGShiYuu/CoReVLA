@@ -1,9 +1,9 @@
 ### model
-model_name_or_path: "../qwen2.5/Qwen/Qwen2.5-VL-7B-Instruct"
+model_name_or_path: "./qwen2.5/Qwen/Qwen2.5-VL-7B-Instruct"
 image_max_pixels: 262144
 video_max_pixels: 16384
 trust_remote_code: true
-deepspeed: "../LLaMA-Factory/examples/deepspeed/ds_z3_config.json"
+deepspeed: "./LLaMA-Factory/examples/deepspeed/ds_z3_config.json"
 
 ### method
 stage: sft
@@ -14,7 +14,7 @@ lora_target: all
 
 ### dataset
 dataset: HAD_train,BDD_train,lingoqa_action   # video: mllm_video_demo
-dataset_dir: "../LLaMA-Factory/data"
+dataset_dir: "./LLaMA-Factory/data"
 template: qwen2_vl
 cutoff_len: 8182
 max_samples: 200000
@@ -23,7 +23,7 @@ preprocessing_num_workers: 16
 dataloader_num_workers: 4
 
 ### output
-output_dir: "../LLaMA-Factory/saves/Qwen2.5-7B/lora/sft/20250712-all"
+output_dir: "./LLaMA-Factory/saves/Qwen2.5-7B/lora/sft/20250712-all"
 logging_steps: 10
 save_steps: 200
 plot_loss: true
