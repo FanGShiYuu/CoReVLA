@@ -36,7 +36,7 @@ Autonomous Driving (AD) systems have made notable progress, but their performanc
 
 ## Getting Started
 
-### CARLA Setup
+### 1.CARLA Setup
 
 ```bash
 mkdir carla && cd carla
@@ -79,12 +79,20 @@ source ./env.sh
 ```
 ---
 
-### Bench2Drive Setup
+### 2.Bench2Drive Setup
 ```bash
 git clone https://github.com/Thinklab-SJTU/Bench2Drive-VL
 ```
 
+### 3.Model Setup
+```bash
+git clone https://github.com/Thinklab-SJTU/Bench2Drive-VL
+```
 
+### 4.Run Closed-loop Test
+```bash
+git clone https://github.com/Thinklab-SJTU/Bench2Drive-VL
+```
 
 
 ## Data Release
