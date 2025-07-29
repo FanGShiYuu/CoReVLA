@@ -54,7 +54,7 @@ export CARLA_ROOT=YOUR_CARLA_PATH
 echo "$CARLA_ROOT/PythonAPI/carla/dist/carla-0.9.15-py3.7-linux-x86_64.egg" >> YOUR_CONDA_PATH/envs/YOUR_CONDA_ENV_NAME/lib/python3.7/site-packages/carla.pth
 ```
 
-#### Write `env.sh`
+Write `env.sh`
 
 ```bash
 export CARLA_ROOT=/path/to/your/carla
@@ -72,7 +72,7 @@ export VQA_GEN=1
 export STRICT_MODE=1
 ```
 
-#### Activate Environment
+Activate Environment
 
 ```bash
 source ./env.sh
@@ -80,18 +80,49 @@ source ./env.sh
 ---
 
 ### 2.Bench2Drive Setup
+Detailed initialization procedures can be found in [Here](https://github.com/Thinklab-SJTU/Bench2Drive-VL).
 ```bash
 git clone https://github.com/Thinklab-SJTU/Bench2Drive-VL
 ```
+Replace the relevant source code files in the repository (listed in the XXX folder).
 
 ### 3.Model Setup
+Load the base model Qwen2.5-VL-7B-Instruct from the official Hugging Face repository:
 ```bash
-git clone https://github.com/Thinklab-SJTU/Bench2Drive-VL
+from transformers import Qwen2_5_VLForConditionalGeneration, AutoTokenizer, AutoProcessor
+from qwen_vl_utils import process_vision_info
+
+model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+    "Qwen/Qwen2.5-VL-7B-Instruct", torch_dtype="auto", device_map="auto"
+)
+processor = AutoProcessor.from_pretrained("Qwen/Qwen2.5-VL-7B-Instruct")
+```
+
+Merge [LoRA parameters](./checkpoint) into the Base Model with PEFT library or Llama Factory with this YAML (the latter is recommended)
+```bash
+from transformers import AutoTokenizer
+from peft import PeftModel, PeftConfig
+import torch
+
+# Load base model
+base_model_path = "./XX/"  # where you store Qwen
+model = AutoModelForCausalLM.from_pretrained(base_model_path, trust_remote_code=True, torch_dtype=torch.float16)
+tokenizer = AutoTokenizer.from_pretrained(base_model_path, trust_remote_code=True)
+
+# Load and merge LoRA
+lora_path = "./XX/" 
+model = PeftModel.from_pretrained(model, lora_path)
+model = model.merge_and_unload()
+
+# Save the merged model (optional)
+model.save_pretrained("./merged_model")
+tokenizer.save_pretrained("./merged_model")
 ```
 
 ### 4.Run Closed-loop Test
+Once the model and Bench2Drive are set up, run the following command for closed-loop testing:
 ```bash
-git clone https://github.com/Thinklab-SJTU/Bench2Drive-VL
+bash your_script.sh
 ```
 
 
@@ -103,15 +134,27 @@ git clone https://github.com/Thinklab-SJTU/Bench2Drive-VL
 | [HAD HRI](https://usa.honda-ri.com/had)  | Supports research on driver behavior, takeover intention,<br> and human-automation responsibility modeling.  | 4319 videos of 20 seconds long with textual explanation and description <br>(3926 in Train; 1123 in Val) | O |
 | [LingoQA](https://github.com/wayveai/LingoQA)   | Evaluates visual-language models through question answering on images or video content. | Scenario clips with 5 seconds length and language annotations <br>(267.8k QA in Congition; 152.5 QA in Decision) | O |
 
-Example of STF dataset format
+Example of STF dataset format, use this code to process the original data into the corresponding format
  ```
- {
-    "video_id": "test0001.mp4", 
-    "QA": {
-        "q": "How did the car handle the oncoming traffic before making the left turn?", 
-        "a": "The ego-car detected oncoming traffic and stopped to wait until the lane was clear. It maintained the stopped position for quite some time and only proceeded to turn left when it was safe to do so. "
-    }
- }
+{
+    "messages": [
+      {
+        "role": "user",
+        "content": "<image>../datasets/images/train/1074b3c991ca71badb563356dbef3d0a/0.jpg<image>../datasets/images/train/1074b3c991ca71badb563356dbef3d0a/1.jpg<image>../datasets/images/train/1074b3c991ca71badb563356dbef3d0a/2.jpg<image>../datasets/images/train/1074b3c991ca71badb563356dbef3d0a/3.jpg<image>../datasets/images/train/1074b3c991ca71badb563356dbef3d0a/4.jpg\nWhat is your current driving action and it's justification?"
+      },
+      {
+        "role": "assistant",
+        "content": "I am stopping to let the pedestrian safely cross the road ahead because it is the law and it's the right thing to do to ensure the safety of the pedestrian."
+      }
+    ],
+    "images": [
+      "../datasets/images/train/1074b3c991ca71badb563356dbef3d0a/0.jpg",
+      "../datasets/images/train/1074b3c991ca71badb563356dbef3d0a/1.jpg",
+      "../datasets/images/train/1074b3c991ca71badb563356dbef3d0a/2.jpg",
+      "../datasets/images/train/1074b3c991ca71badb563356dbef3d0a/3.jpg",
+      "../datasets/images/train/1074b3c991ca71badb563356dbef3d0a/4.jpg"
+    ]
+  },
  ```
 
 
@@ -119,18 +162,34 @@ Example of STF dataset format
 ### DPO Datasets
 | Base Dataset | Instruction |      Size    |   Released  |
 |:-------------:|:-----------------------:|:------------:|:----------:|
-| [Part1](https://bdd-data.berkeley.edu/)| Used for multi-task autonomous driving benchmarks:<br> detection, segmentation, tracking, prediction. | 9k decision preference pairs with language annotations | O |
-| [Part2](https://usa.honda-ri.com/had)  | Supports research on driver behavior, takeover intention,<br> and human-automation responsibility modeling.  | Takeover data in CAVE | x |
+| [Part1](https://bdd-data.berkeley.edu/)| Preference data from LingoQA. | 9k decision preference pairs with language annotations | O |
+| [Part2](https://usa.honda-ri.com/had)  | Preference data from CAVE.  | Takeover data in CAVE | x |
 
 Example of DPO dataset format
  ```
- {
-    "video_id": "test0001.mp4", 
-    "QA": {
-        "q": "How did the car handle the oncoming traffic before making the left turn?", 
-        "a": "The ego-car detected oncoming traffic and stopped to wait until the lane was clear. It maintained the stopped position for quite some time and only proceeded to turn left when it was safe to do so. "
+{
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>../datasets/images/train/213b094305b36196f786e9c263a6ab89/0.jpg<image>../datasets/images/train/213b094305b36196f786e9c263a6ab89/1.jpg<image>../datasets/images/train/213b094305b36196f786e9c263a6ab89/2.jpg<image>../datasets/images/train/213b094305b36196f786e9c263a6ab89/3.jpg<image>../datasets/images/train/213b094305b36196f786e9c263a6ab89/4.jpg\nWhat are you currently doing and why?"
+      }
+    ],
+    "images": [
+      "../datasets/images/train/213b094305b36196f786e9c263a6ab89/0.jpg",
+      "../datasets/images/train/213b094305b36196f786e9c263a6ab89/1.jpg",
+      "../datasets/images/train/213b094305b36196f786e9c263a6ab89/2.jpg",
+      "../datasets/images/train/213b094305b36196f786e9c263a6ab89/3.jpg",
+      "../datasets/images/train/213b094305b36196f786e9c263a6ab89/4.jpg"
+    ],
+    "chosen": {
+      "from": "gpt",
+      "value": "I will turn to the right lane and accelerate to pass the car in front of me because there is a larger gap on the right that can provide a passing environment."
+    },
+    "rejected": {
+      "from": "gpt",
+      "value": "I will keep following the car at a steady speed because I don't know if there are any cars behind me when I turn."
     }
- }
+  },
  ```
 
 ## Citation
