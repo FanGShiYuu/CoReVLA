@@ -2,7 +2,7 @@
 
 <div align ="center">
 
-<img src="./assets/CoReVLA_icon.png" width="100%">
+<img src="./assets/CoReVLA_icon.png" width="110%">
 
 </div>
 
@@ -84,7 +84,7 @@ Detailed initialization procedures can be found in [Here](https://github.com/Thi
 ```bash
 git clone https://github.com/Thinklab-SJTU/Bench2Drive-VL
 ```
-Replace the relevant source code files in the repository (listed in the XXX folder).
+Replace the relevant source code files in the repository (listed in the [bench2drive_files](./bench2drive_files) folder).
 
 ### 3.Model Setup
 Load the base model Qwen2.5-VL-7B-Instruct from the official Hugging Face repository:
@@ -98,7 +98,7 @@ model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
 processor = AutoProcessor.from_pretrained("Qwen/Qwen2.5-VL-7B-Instruct")
 ```
 
-Merge [LoRA parameters](./checkpoint) into the Base Model with PEFT library or Llama Factory with this YAML (the latter is recommended)
+Merge [LoRA parameters](./checkpoint) into the Base Model with PEFT library or Llama Factory with this [YAML](./bench2drive_files/Qwen2.5-VL-7B-multiGPU-250712-all.yaml) (the latter is recommended)
 ```bash
 from transformers import AutoTokenizer
 from peft import PeftModel, PeftConfig
@@ -122,7 +122,7 @@ tokenizer.save_pretrained("./merged_model")
 ### 4.Run Closed-loop Test
 Once the model and Bench2Drive are set up, run the following command for closed-loop testing:
 ```bash
-bash your_script.sh
+bash Dev10-Qwen2.5-all.sh
 ```
 
 
@@ -162,8 +162,8 @@ Example of STF dataset format, use this code to process the original data into t
 ### DPO Datasets
 | Base Dataset | Instruction |      Size    |   Released  |
 |:-------------:|:-----------------------:|:------------:|:----------:|
-| [Part1](https://bdd-data.berkeley.edu/)| Preference data from LingoQA. | 9k decision preference pairs with language annotations | O |
-| [Part2](https://usa.honda-ri.com/had)  | Preference data from CAVE.  | Takeover data in CAVE | x |
+| [Part1](https://bdd-data.berkeley.edu/)| Preference data from LingoQA. | 9k decision preference pairs<br> with language annotations | O |
+| [Part2](https://usa.honda-ri.com/had)  | Preference data from CAVE.  | Takeover data in CAVE | X |
 
 Example of DPO dataset format
  ```
