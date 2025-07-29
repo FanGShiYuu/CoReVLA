@@ -7,8 +7,6 @@
 #SBATCH --cpus-per-task=7
 #SBATCH --gres=gpu:l40:1
 #SBATCH --time=48:00:00
-#SBATCH -o /share/home/u22537/data/FSY/Bench2Drive/outs/%j.out
-#SBATCH -e /share/home/u22537/data/FSY/Bench2Drive/outs/%j.err
 
 source /share/apps/miniconda3/etc/profile.d/conda.sh
 module load cuda/12.1
@@ -17,8 +15,8 @@ module load cuda/12.1
 echo "[VLM] Launching VLM web service..."
 (
     conda activate b2d-vlm
-    cd ../Bench2Drive/B2DVL
-    python ../Bench2Drive/B2DVL/Bench2Drive-VL-main/B2DVL_Adapter/web_interact_app.py \
+    cd ./Bench2Drive/B2DVL
+    python ./B2DVL_Adapter/web_interact_app.py \
         --config ./vlm_config_all.json
 ) &
 
@@ -45,8 +43,8 @@ echo "[VLM] VLM service is ready. Launching Carla experiments..."
 # ---------- Launch Carla closed-loop task ----------
 (
     conda activate b2d-carla
-    cd ../Bench2Drive/B2DVL/Bench2Drive-VL-main
-    source ../Bench2Drive/B2DVL/env.sh
+    cd ./Bench2Drive-VL-main
+    source ./env.sh
     bash startup_closeloop_all.sh
 ) &
 
