@@ -1,0 +1,33 @@
+{
+    "TASK_CONFIGS": {
+        "FRAME_PER_SEC": 5 
+    },
+    "INFERENCE_BASICS": {
+        "INPUT_WINDOW": 1, 
+        "CONVERSATION_WINDOW": 1, 
+        "USE_ALL_CAMERAS": false,
+        "USE_BEV": false, 
+        "NO_HISTORY_MODE": false 
+    },
+    "CHAIN": { 
+        "NODE": [8, 24, 43, 51, 50],
+        "EDGE": { 
+            "8": [43],
+            "51": [43],
+            "43": [24],
+            "24": [50],
+            "50": []
+        },
+        "INHERIT": { 
+        },
+        "USE_GT": [] 
+    },
+    "CONTROL_RATE": 1.0, 
+    "MODEL_NAME": "Qwen2.5VL", 
+    "MODEL_PATH": "/share/home/u22537/data/FSY/LLaMA-Factory/models/Qwen2.5/Qwen2.5-VL-7B-Instruct-all", 
+    "GPU_ID": 0, 
+    "PORT": 7023,
+    "IN_CARLA": true,
+    "USE_BASE64": true, 
+    "NO_PERC_INFO": false 
+}
