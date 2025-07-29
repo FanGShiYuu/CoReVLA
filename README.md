@@ -2,7 +2,7 @@
 
 <div align ="center">
 
-<img src="./assets/CoReVLA_icon.png" width="100%">
+<img src="assets/CoReVLA_icon.png" width="1000">
 
 </div>
 
@@ -15,7 +15,7 @@ Autonomous Driving (AD) systems have made notable progress, but their performanc
 
 ## Highlights ✨
 <div align="center">
-<img src="assets/CoReVLA_framework.png" width="1000">
+<img src="assets/CoReVLA_framework.png" width="900">
 </div>
 
 * **HITL-based data collection in immersive simulation.** We collect visually grounded takeover data from the CAVE platform, enabling capture of failure cases in long-tail scenarios.
