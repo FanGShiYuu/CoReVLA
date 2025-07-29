@@ -2,10 +2,9 @@
 
 <div align ="center">
 
-<img src="./assets/CoReVLA_icon.png" width="110%">
+<img src="./assets/CoReVLA_icon.png" width="100%">
 
 </div>
-
 
 
 <!-- ## Introduction -->
@@ -161,8 +160,8 @@ Example of STF dataset format, use this code to process the original data into t
 ### DPO Datasets
 | Base Dataset | Instruction |      Size    |   Released  |
 |:-------------:|:-----------------------:|:------------:|:----------:|
-| [Part1](https://bdd-data.berkeley.edu/)| Preference data from LingoQA. | 9k decision preference pairs<br> with language annotations | O |
-| [Part2](https://usa.honda-ri.com/had)  | Preference data from CAVE.  | Takeover data in CAVE | X |
+| [Part1](./bench2drive_files/dpo_part1.json)| Preference data from LingoQA. | 9k decision preference pairs<br> with language annotations | O |
+| Part2  | Preference data from CAVE.  | Takeover data in CAVE | X |
 
 Example of DPO dataset format
  ```
