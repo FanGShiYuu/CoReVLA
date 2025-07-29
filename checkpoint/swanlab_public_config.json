@@ -1,0 +1,13 @@
+{
+  "project_name": "llamafactory",
+  "version": "0.5.4",
+  "run_id": "run-20250713_031833-a3b1799d",
+  "swanlog_dir": "/share/home/u22537/data/FSY/LLaMA-Factory/swanlog",
+  "run_dir": "/share/home/u22537/data/FSY/LLaMA-Factory/swanlog/run-20250713_031833-a3b1799d",
+  "cloud": {
+    "project_name": "llamafactory",
+    "project_url": "https://swanlab.cn/@FangShiYuu/llamafactory",
+    "experiment_name": "rat-24",
+    "experiment_url": "https://swanlab.cn/@FangShiYuu/llamafactory/runs/pqsraddq20aq2l1ol0eeu"
+  }
+}
