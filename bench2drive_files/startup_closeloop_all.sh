@@ -7,7 +7,7 @@ BASE_CHECKPOINT_ENDPOINT=./checkpoint_DEV10_Qwen2.5-all-0716 # path to the check
 # If not exist, it will be automatically created.
 SAVE_PATH=./eval_v1/ # the directory where seonsor data is saved.
 GPU_RANK=0 # the gpu carla runs on
-VLM_CONFIG=../vlm_config_short.json # your config json
+VLM_CONFIG=./vlm_config_short.json # your config json
 PORT=$BASE_PORT
 TM_PORT=$BASE_TM_PORT
 ROUTES="${BASE_ROUTES}.xml"
