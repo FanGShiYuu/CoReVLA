@@ -195,5 +195,13 @@ Example of DPO dataset format
 If this work is helpful for your research, please consider citing:
 
 ```
-
+@misc{fang2025corevladualstageendtoendautonomous,
+      title={CoReVLA: A Dual-Stage End-to-End Autonomous Driving Framework for Long-Tail Scenarios via Collect-and-Refine}, 
+      author={Shiyu Fang and Yiming Cui and Haoyang Liang and Chen Lv and Peng Hang and Jian Sun},
+      year={2025},
+      eprint={2509.15968},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2509.15968}, 
+}
 ```
