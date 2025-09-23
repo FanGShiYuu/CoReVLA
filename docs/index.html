@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDP: A Knowledge-Driven Diffusion Policy for End-to-End Autonomous Driving Based on Expert Routing</title>
+    <script>
+        // Set base URL for GitHub Pages
+        if (window.location.hostname === 'perfectxu88.github.io' || window.location.pathname.indexOf('/KDP-AD') === 0) {
+            document.write('<base href="/KDP-AD/">');
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$','$$']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">KDP-AD</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#casestudy" class="nav-link">Case Study</a></li>
+                <li><a href="#abstract" class="nav-link">Abstract</a></li>
+                <li><a href="#method" class="nav-link">Method</a></li>
+                <li><a href="#results" class="nav-link">Results</a></li>
+                <li><a href="#download" class="nav-link">Download</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content-vertical">
+                <h1 class="hero-title">
+                    KDP-AD:
+                    <div class="highlight"> A Knowledge-Driven Diffusion Policy </div>
+                    <div class="highlight">for End-to-End Autonomous Driving Based on Expert Routing</div>
+                </h1>
+                
+                <div class="authors">
+                    <p class="author-names">Chengkai Xu<sup>1</sup>, Jiaqi Liu<sup>2</sup>, Yicheng Guo<sup>1</sup>, Peng Hang<sup>1</sup>, Jian Sun<sup>1</sup></p>
+                    <p class="affiliations">
+                        <sup>1</sup>Tongji University, <sup>2</sup>UNC-Chapel Hill
+                    </p>
+                    <p class="contact-info">
+                        <strong>Contact:</strong> 2534242@tongji.edu.cn
+                    </p>
+                </div>
+
+                <div class="hero-image">
+                    <img src="assets/images/Fig_framework.png" alt="KDP-AD Framework Overview" class="framework-img">
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="https://arxiv.org/abs/2509.04853" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-file-pdf"></i> Paper
+                    </a>
+                    <a href="https://github.com/perfectxu88/KDP-AD" class="btn btn-secondary">
+                        <i class="fab fa-github"></i> Code
+                    </a>
+                    <a href="#download" class="btn btn-secondary">
+                        <i class="fas fa-database"></i> Download
+                    </a>
+                    <a href="#checkpoints" class="btn btn-secondary">
+                        <i class="fa-solid fa-file"></i> CheckPoints
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case-study Section -->
+    <section id="casestudy" class="section">
+      <div class="container">
+        <h2 class="section-title">Case Study & Analysis</h2>
+
+        <!-- 主视频 -->
+        <div class="main-video">
+          <video controls>
+            <source src="assets/videos/video_CXrORX_24.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Main Video</p>
+        </div>
+
+        <!-- 六个视频 -->
+        <div class="video-grid">
+          <div class="video-wrapper">
+            <video controls>
+              <source src="assets/videos/intersection_left.mp4" type="video/mp4">
+            </video>
+            <p class="video-caption">Intersection</p>
+          </div>
+          <div class="video-wrapper">
+            <video controls>
+              <source src="assets/videos/roundabout_third.mp4" type="video/mp4">
+            </video>
+            <p class="video-caption">Roundabout</p>
+          </div>
+          <div class="video-wrapper">
+            <video controls>
+              <source src="assets/videos/in_ramp.mp4" type="video/mp4">
+            </video>
+            <p class="video-caption">In Ramp</p>
+          </div>
+          <div class="video-wrapper">
+            <video controls>
+              <source src="assets/videos/intersection_right.mp4" type="video/mp4">
+            </video>
+            <p class="video-caption">Intersection</p>
+          </div>
+          <div class="video-wrapper">
+            <video controls>
+              <source src="assets/videos/intersection_straight.mp4" type="video/mp4">
+            </video>
+            <p class="video-caption">Intersection</p>
+          </div>
+          <div class="video-wrapper">
+            <video controls>
+              <source src="assets/videos/roundabout_second.mp4" type="video/mp4">
+            </video>
+            <p class="video-caption">Roundabout</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Abstract Section -->
+    <section id="abstract" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Abstract</h2>
+            <div class="abstract-content">
+                <p>
+                    End-to-end autonomous driving remains constrained by the need to generate multimodal actions, maintain temporal stability, and generalize across diverse scenarios. Existing methods often collapse multimodality, struggle with long-horizon consistency, or lack modular adaptability. This paper presents KDP, a knowledge-driven diffusion policy that integrates generative diffusion modeling with a sparse mixture-of-experts routing mechanism.
+                </p>
+                <p>
+                   The diffusion component generates temporally coherent and multimodal action sequences, while the expert routing mechanism activates specialized and reusable experts according to context, enabling modular knowledge composition.
+                </p>
+                <p>
+                    Extensive experiments across representative driving scenarios demonstrate that KDP achieves consistently higher success rates, reduced collision risk, and smoother control compared to prevailing paradigms. Ablation studies highlight the effectiveness of sparse expert activation and the Transformer backbone, and activation analyses reveal structured specialization and cross-scenario reuse of experts. These results establish diffusion with expert routing as a scalable and interpretable paradigm for knowledge-driven end-to-end autonomous driving.
+                </p>
+                <div class="key-contributions">
+                    <h3>Key Contributions</h3>
+                    <ul>
+                        <li><span class="highlight">A knowledge-driven end-to-end driving framework.</span> We remodel experts in MoE as abstract driving knowledge units, enabling modular and compositional policy learning beyond task-centric formulations.</li>
+                        <li><span class="highlight">Integration of diffusion modeling with expert routing.</span> We combine diffusion policies with MoE, which can maintain long-horizon consistency while adapting to diverse scenarios through modularity and selective reuse of knowledge.</li>
+                        <li><span class="highlight">Comprehensive empirical validation.</span> We demonstrate the effectiveness of the proposed approach on diverse driving scenarios, achieving superior safety, generalization, and efficiency compared with baselines.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method Section -->
+    <section id="method" class="section">
+        <div class="container">
+            <h2 class="section-title">Methodology</h2>
+            <div class="method-overview">
+                <div class="method-image">
+                    <img src="assets/images/Fig_framework.png" alt="VIPER-R1 Framework" class="method-diagram">
+                </div>
+                <div class="method-description">
+                    <p>
+                        Framework of the proposed Knowledge-Driven Diffusion Policy. Scene inputs condition a diffusion-based policy to generate multi-modal, temporally coherent action sequences. A Mixture-of-Experts module refines these sequences by activating experts interpreted as abstract knowledge units, whose combinations express diverse and extensible driving skills such as interaction, maneuvering, and adaptation.
+                    </p>
+                </div>
+            </div>
+
+            <div class="method-stages">
+                <!-- Stage 1: DP -->
+                <div class="stage">
+                    <div class="stage-header">
+                        <div class="stage-number">1</div>
+                        <h3>Diffusion Policy for Driving</h3>
+                    </div>
+                    <div class="stage-content">
+                        <div class="stage-steps">
+                            <div class="step">
+                                <h4>Step 1: Forward Diffusion of Action Sequences</h4>
+                                <p>The forward diffusion process perturbs expert action sequences with gradually injected Gaussian noise to create supervised training targets, enabling the policy to learn how to recover clean and temporally coherent trajectories during the reverse denoising process.</p>
+                                <div class="formula">
+                                    <span class="formula">\( q(a_t \mid a_0) = \mathcal{N}\big(\sqrt{\bar{\alpha}_t} \, a_0, \, (1-\bar{\alpha}_t) I \big) \)</span>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <h4>Step 2: Reverse Denoising Process as Driving Policy</h4>
+                                <p>The reverse denoising process serves as the driving policy by iteratively transforming Gaussian noise into coherent, multi-modal action sequences conditioned on observations, ensuring temporal consistency and capturing the variability of human demonstrations.</p>
+                                <div class="formula">
+                                    <span class="formula">\( p_\theta(a_{t-1} \mid a_t, o_{t}) = \mathcal{N}\!\big(\mu_\theta(a_t, o_{t}, t), \, \Sigma_\theta(a_t, o_{t}, t)\big), \quad t = T,\ldots,1 \)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 2: MoE -->
+                <div class="stage">
+                    <div class="stage-header">
+                        <div class="stage-number">2</div>
+                        <h3>MoE-based Knowledge Routing</h3>
+                    </div>
+                    <div class="stage-content">
+                        <p>
+                            The MoE-based knowledge routing extends the diffusion driving policy with modular experts and a top-K router, enabling dynamic composition of specialized knowledge units while ensuring balanced and efficient expert utilization.
+                        </p>
+
+
+                        <div class="sr2-steps">
+                            <div class="sr2-step">
+                                <strong>Step 1:</strong>
+                                Integration of MoE into Diffusion Policy:
+                                <span class="formula">\( \epsilon_{\theta}(a_t, o_t, t) = \sum_{i \in \mathcal{S}_t} g_{\phi}^{\,i}(o_t)\,\epsilon_{\theta_i}(a_t, o_t, t) \)</span>
+                            </div>
+                            <div class="sr2-step">
+                                <strong>Step 2:</strong>
+                                Routing Mechanism:
+                                <span class="formula">\( g_{\phi}(x) = \mathrm{softmax}(xW) \)</span>
+                            </div>
+                            <div class="sr2-step">
+                              <strong>Step 3:</strong>
+                              Training Objective with Routing Constraints:
+                              <span class="formula">\( \mathcal{L} = \mathcal{L}_{\text{denoise}} + \lambda_{\text{bal}}\,\mathcal{L}_{\text{balance}} - \gamma\, I(K,E) \)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Experimental Results</h2>
+            
+            <!-- Main Results -->
+            <div class="results-section">
+                <h3>Main Results</h3>
+                <p>Comparison of security, efficiency, and comfort test results of different methods in multiple scenarios:</p>
+
+                <!-- DataTables 样式与脚本（CDN） -->
+                <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+                <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+                <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+                <style>
+                      /* 让表头/单元格更紧凑、居中，Ours 行轻微高亮 */
+                      #comparison_wrapper { margin-top: 1rem; }
+                      table#comparison { width: 100%; }
+                      table#comparison th, table#comparison td { text-align: center; vertical-align: middle; }
+                      tr.is-ours td { font-weight: 700; background: rgba(0, 123, 255, 0.06); }
+                      /* 横向滚动时，表格下方加点留白 */
+                      .dataTables_wrapper .dataTables_scroll { margin-bottom: 1rem; }
+                      /* caption 样式 */
+                      #comparison caption { caption-side: top; font-weight: 600; text-align: left; margin-bottom: .5rem; }
+                </style>
+
+                <div class="table-container">
+                  <table id="comparison" class="display nowrap">
+                    <thead>
+                      <tr>
+                        <th>Scenario</th>
+                        <th>Model</th>
+                        <th>Success Rate</th>
+                        <th>Collision Rate</th>
+                        <th>Average Episodic Reward</th>
+                        <th>Average Velocity (m/s)</th>
+                        <th>Acceleration Variance</th>
+                        <th>Average Completion Steps</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- In Ramp -->
+                      <tr>
+                        <td>In Ramp</td><td>PPO-Lag</td><td>0.95</td><td>0.02</td><td>191.86</td><td>7.06</td><td>0.38</td><td>250.67</td>
+                      </tr>
+                      <tr>
+                        <td>In Ramp</td><td>RPID</td><td>0.99</td><td>0.01</td><td>196.27</td><td>7.47</td><td>0.38</td><td>242.57</td>
+                      </tr>
+                      <tr>
+                        <td>In Ramp</td><td>IBC</td><td>0.86</td><td>0.11</td><td>190.28</td><td>8.03</td><td>0.35</td><td>220.78</td>
+                      </tr>
+                      <tr class="is-ours">
+                        <td>In Ramp</td><td>Ours</td><td>1.00</td><td>0.00</td><td>197.52</td><td>8.61</td><td>0.37</td><td>210.99</td>
+                      </tr>
+
+                      <!-- Intersection -->
+                      <tr>
+                        <td>Intersection</td><td>PPO-Lag</td><td>0.90</td><td>0.10</td><td>116.79</td><td>6.30</td><td>0.45</td><td>172.02</td>
+                      </tr>
+                      <tr>
+                        <td>Intersection</td><td>RPID</td><td>0.63</td><td>0.37</td><td>98.57</td><td>7.28</td><td>0.39</td><td>125.42</td>
+                      </tr>
+                      <tr>
+                        <td>Intersection</td><td>IBC</td><td>0.68</td><td>0.31</td><td>98.94</td><td>5.75</td><td>0.35</td><td>163.48</td>
+                      </tr>
+                      <tr class="is-ours">
+                        <td>Intersection</td><td>Ours</td><td>0.94</td><td>0.06</td><td>121.54</td><td>6.34</td><td>0.45</td><td>174.05</td>
+                      </tr>
+
+                      <!-- Roundabout -->
+                      <tr>
+                        <td>Roundabout</td><td>PPO-Lag</td><td>0.64</td><td>0.18</td><td>142.77</td><td>6.56</td><td>0.45</td><td>203.43</td>
+                      </tr>
+                      <tr>
+                        <td>Roundabout</td><td>RPID</td><td>0.58</td><td>0.19</td><td>134.96</td><td>7.23</td><td>0.40</td><td>174.90</td>
+                      </tr>
+                      <tr>
+                        <td>Roundabout</td><td>IBC</td><td>0.70</td><td>0.22</td><td>139.71</td><td>6.41</td><td>0.35</td><td>245.98</td>
+                      </tr>
+                      <tr class="is-ours">
+                        <td>Roundabout</td><td>Ours</td><td>0.90</td><td>0.10</td><td>177.85</td><td>6.83</td><td>0.45</td><td>246.06</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <script>
+                  $(function () {
+                    $('#comparison').DataTable({
+                      // 体验优化
+                      paging: false,        // 这张表不大，关闭分页
+                      info: false,          // 隐藏“显示 x 到 y”信息
+                      order: [[0, 'asc'], [2, 'desc']], // 默认按场景排序，再按成功率降序
+                      searching: true,      // 开启搜索
+                      scrollX: true,        // 超宽时允许横向滚动
+                      // 数值列对齐/类型提示（可选）
+                      columnDefs: [
+                        { targets: [2,3,4,5,6,7], type: 'num', className: 'dt-body-center' }
+                      ],
+                      language: {
+                        search: 'Search：',
+                        zeroRecords: 'No matching data',
+                        emptyTable: 'The data in the table is empty'
+                      }
+                    });
+                  });
+                </script>
+
+            <!-- Comparison Chart -->
+            <div class="results-section">
+                <h3>Expert Activation Analysis</h3>
+                <div class="expert-grid">
+                    <div class="expert_time">
+                        <img src="assets/images/Fig_expert_time.png" alt="Fig_expert_time" class="chart-img">
+                        <p class="chart-caption">Temporal activation patterns of experts across driving scenarios</p>
+                    </div>
+                </div>
+                <div class="expert-grid">
+                    <div class="expert_time">
+                        <img src = "assets/images/Fig_expert_sce.png" alt = "Fig_expert_sce" class="chart-img">
+                        <p class="chart-caption">Scenario-level expert activation aggregated across episodes, where Experts 1 and 3 dominate in Merge, Experts 1 and 5 dominate in Intersection, and Experts 6 and 8 dominate in Roundabout, while Experts 2 and 4 exhibit occasional activation across multiple scenarios</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ablation Study -->
+            <div class="results-section">
+                <div class="container">
+                <h3>Ablation Study</h3>
+                <p>Performance comparison of model variants across driving scenarios:</p>
+                <div class="ablation-grid">
+                    <div class="ablation-chart">
+                        <img src="assets/images/Fig_ablation.png" alt="Ablation Study Results" class="chart-img">
+                        <p class="chart-caption">Contribution of Transformer and MoE stages</p>
+                    </div>
+                    <div class="ablation-results">
+                        <div class="ablation-item">
+                            <h4>Baseline-U</h4>
+                            <p>Sce-1: 0.68 | Sce-2: 0.71 | Sce-3: 0.91</p>
+                        </div>
+                        <div class="ablation-item">
+                            <h4>Baseline-T (+ Transformer)</h4>
+                            <p>Sce-1: 0.76 | Sce-2: 0.84 | Sce-3: 0.98</p>
+                        </div>
+                        <div class="ablation-item">
+                            <h4>Ours (+ MoE)</h4>
+                            <p>Sce-1: 0.94 | Sce-2: 0.90 | Sce-3: 1.00</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+    <!-- Download Section -->
+    <section id="download" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Checkpoints And Datasets</h2>
+
+            <div class="model-downloads">
+                <a href="#" class="btn btn-secondary btn-large">
+                    <i class="fas fa-download"></i> Giant Model
+                </a>
+                <a href="#" class="btn btn-secondary btn-large">
+                    <i class="fas fa-download"></i> Large Model
+                </a>
+                <a href="#" class="btn btn-secondary btn-large">
+                    <i class="fas fa-download"></i> Medium Model
+                </a>
+                <a href="#" class="btn btn-secondary btn-large">
+                    <i class="fas fa-download"></i> Small Model
+                </a>
+            </div>
+
+            <div class="dataset-download">
+                <a href="#" class="btn btn-primary btn-large">
+                    <i class="fas fa-download"></i> Download Dataset
+                </a>
+                <p class="download-info">Checkpoints and Dataset will be released upon paper acceptance</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Citation Section -->
+    <section id="citation" class="section">
+        <div class="container">
+            <h2 class="section-title">Citation</h2>
+            <div class="citation-box">
+                <pre><code>
+@article{xu2025kdp,
+          title   = {A Knowledge-Driven Diffusion Policy for End-to-End Autonomous Driving Based on Expert Routing},
+          author  = {Xu, Chengkai and Liu, Jiaqi and Guo, Yicheng and Hang, Peng and Sun, Jian},
+          journal = {arXiv preprint arXiv:2509.04853},
+          year    = {2025}
+        }
+                </code></pre>
+                <button class="copy-btn" onclick="copyBibTeX()">
+                    <i class="fas fa-copy"></i> Copy BibTeX
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>KDP-AD</h4>
+                    <p>A Knowledge-Driven Diffusion Policy for End-to-End Autonomous Driving Based on Expert Routing.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#paper">Paper</a></li>
+                        <li><a href="#dataset">Dataset</a></li>
+                        <li><a href="#code">Code</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>For questions about this work, please contact the authors.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 KDP-AD. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

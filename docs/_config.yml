@@ -1,0 +1,104 @@
+# GitHub Pages Configuration for VIPER-R1 Project Website
+
+# Site settings
+title: "KDP: A Knowledge-Driven Diffusion Policy"
+description: "A Knowledge-Driven Diffusion Policy for End-to-End Autonomous Driving Based on Expert Routing"
+author: "Chengkai Xu et al."
+email: "2534242@tongji.edu.cn"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# GitHub Pages specific settings
+github_username: PerfectXu88  # Replace with actual GitHub username
+repository: KDP-AD  # Replace with actual repository name
+
+# Site URL (will be auto-generated for GitHub Pages)
+url: "https://perfectxu88.github.io"  # Replace with your actual GitHub Pages URL
+baseurl: "/KDP-AD"  # Replace with your repository name
+
+# Theme
+theme: minima
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - LICENSE
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - .DS_Store
+
+# Include files in processing
+include:
+  - _pages
+  - assets
+
+# Collections (if needed for future expansion)
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+
+# Default layout for different content types
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+# SEO and metadata
+lang: en-US
+timezone: UTC
+
+# Social media and academic profiles (optional)
+social_links:
+  github: PerfectXu88  # Replace with actual GitHub username
+  twitter: your-twitter   # Replace with actual Twitter handle (optional)
+  linkedin: your-linkedin # Replace with actual LinkedIn profile (optional)
+
+# Academic paper information
+paper:
+  title: "A Knowledge-Driven Diffusion Policy for End-to-End Autonomous Driving Based on Expert Routing"
+  authors:
+    - name: "Chengkai Xu"
+      affiliation: "Tongji University"
+  year: 2025
+  venue: "arXiv preprint"
+  abstract: "End-to-end autonomous driving remains constrained by the need to generate multimodal actions, maintain temporal stability, and generalize across diverse scenarios. Existing methods often collapse multimodality, struggle with long-horizon consistency, or lack modular adaptability. This paper presents KDP, a knowledge-driven diffusion policy that integrates generative diffusion modeling with a sparse mixture-of-experts routing mechanism. 
+The diffusion component generates temporally coherent and multimodal action sequences, while the expert routing mechanism activates specialized and reusable experts according to context, enabling modular knowledge composition.
+Extensive experiments across representative driving scenarios demonstrate that KDP achieves consistently higher success rates, reduced collision risk, and smoother control compared to prevailing paradigms. 
+Ablation studies highlight the effectiveness of sparse expert activation and the Transformer backbone, and activation analyses reveal structured specialization and cross-scenario reuse of experts. These results establish diffusion with expert routing as a scalable and interpretable paradigm for knowledge-driven end-to-end autonomous driving."
+
+# Dataset information
+dataset:
+  name: "Meta_KDP"
+  size: 3000
+  description: "Metadrive dataset collected by PPO Expert Agent."
+  formats:
+    - "Kinematic phase portraits"
+    - "Trajectory plots"
+    - "Numerical motion data"
+    - "Ground-truth symbolic equations"
+
+
+# GitHub repository information https://perfectxu88.github.io/KDP-AD/
+repo:
+  code_url: "https://github.com/PerfectXu88/KDP-AD"  # Replace with actual repo URL
+  dataset_url: ""  # Replace with actual dataset URL
+  paper_url: ""  # Replace with actual arXiv URL when available
