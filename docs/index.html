@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoReVLA: A Dual-Stage End-to-End Autonomous Driving Framework for Long-Tail Scenarios via Collect-and-Refine</title>
     <script>
-        // Set base URL for GitHub Pages
+        // Set base URL for GitHub Pages  
         if (window.location.hostname === 'FanGShiYuu.github.io' || window.location.pathname.indexOf('/CoReVLA') === 0) {
             document.write('<base href="/CoReVLA/">');
         }
@@ -15,6 +15,53 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- 全局样式调整 - 减少整个网站的留白 -->
+    <style>
+      /* 全局容器宽度调整 - 减少左右留白 */
+      .container {
+        max-width: 1000px !important;                                   /* 增加容器最大宽度到1400px，覆盖默认样式 */
+        padding-left: 10px !important;                                  /* 左内边距20px */
+        padding-right: 10px !important;                                 /* 右内边距20px */
+      }
+      
+      /* 主要内容区域（标题、摘要、方法论）进一步扩宽 */
+      #home .container,
+      #abstract .container, 
+      #method .container,
+      #results .container {
+        max-width: 1200px !important;                                   /* 主要内容区域更宽 */
+        padding-left: 35px !important;                                  /* 增加左内边距 */
+        padding-right: 35px !important;                                 /* 增加右内边距 */
+      }
+      
+      /* 摘要内容特别优化 */
+      .abstract-content {
+        max-width: none !important;                                     /* 移除摘要内容的宽度限制 */
+        padding: 0 !important;                                          /* 移除额外的内边距 */
+      }
+      
+      .abstract-content p {
+        text-align: justify;                                            /* 两端对齐，更好利用宽度 */
+        line-height: 1.8;                                               /* 增加行高提高可读性 */
+      }
+      
+      /* 对于超大屏幕进一步扩大容器 */
+      @media (min-width: 1200px) {
+        .container {
+          max-width: 1200px !important;                                 /* 超大屏幕上容器最大宽度1800px */
+        }
+        
+        #home .container,
+        #abstract .container, 
+        #method .container,
+        #results .container {
+          max-width: 1400px !important;                                 /* 主要内容区域在超大屏幕上更宽 */
+          padding-left: 40px !important;                                
+          padding-right: 40px !important;                               
+        }
+      }
+    </style>
 </head>
 
 <script>
@@ -29,14 +76,14 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-brand">KDP-AD</div>
+            <div class="nav-brand">CoReVLA</div>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#casestudy" class="nav-link">Case Study</a></li>
                 <li><a href="#abstract" class="nav-link">Abstract</a></li>
                 <li><a href="#method" class="nav-link">Method</a></li>
                 <li><a href="#results" class="nav-link">Results</a></li>
-                <li><a href="#download" class="nav-link">Download</a></li>
+                <li><a href="#casestudy" class="nav-link">Case Study</a></li>
+                <!-- <li><a href="#download" class="nav-link">Download</a></li> -->
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -55,7 +102,7 @@
                     <div class="highlight">CoReVLA: A Dual-Stage End-to-End Autonomous Driving Framework  </div>
                     <div class="highlight">for Long-Tail Scenarios via Collect-and-Refine</div>
                 </h1>
-                
+        
                 <div class="authors">
                     <p class="author-names">Shiyu Fang<sup>1</sup>, Yiming Cui<sup>1</sup>, Haoyang Liang<sup>1</sup>, Chen Lv<sup>2</sup>, Peng Hang<sup>1</sup>, Jian Sun<sup>1</sup></p>
                     <p class="affiliations">
@@ -66,9 +113,111 @@
                     </p>
                 </div>
 
+                <!-- 作者信息样式调整 - 让文字更大，减少与图片的间距 -->
+                <style>
+                  .authors {
+                    margin-bottom: -2rem !important;                      /* 减少底部边距，缩小与图片的间隔 */
+                    margin-top: -1 !important;                              /* 移除顶部边距 */
+                    width: 100% !important;                                /* 宽度占满容器 */
+                    max-width: 1200px !important;                          /* 最大宽度1200px */
+                  }
+                  
+                  .author-names {
+                    font-size: 1.4rem !important;                          /* 增加作者姓名字体大小到1.4rem (22.4px) */
+                    font-weight: 600 !important;                           /* 增加字体粗细 */
+                    color: #1f2937 !important;                             /* 深色文字 */
+                    margin-bottom: 1rem !important;                        /* 增加底部边距 */
+                    line-height: 1.7 !important;                           /* 增加行高提高可读性 */
+                  }
+                  
+                  .affiliations {
+                    font-size: 1.2rem !important;                         /* 增加机构信息字体大小到1.15rem (18.4px) */
+                    color: #4b5563 !important;                             /* 中等灰色 */
+                    margin-bottom: 0.8rem !important;                      /* 增加底部边距 */
+                    line-height: 1.6 !important;                           /* 增加行高 */
+                    font-weight: 500 !important;                           /* 增加字体粗细 */
+                  }
+                  
+                  .contact-info {
+                    font-size: 1.2rem !important;                          /* 增加联系信息字体大小到1.1rem (17.6px) */
+                    color: #2563eb !important;                             /* 蓝色链接色 */
+                    margin-bottom: 0 !important;                           /* 移除底部边距 */
+                    font-weight: 600 !important;                           /* 增加字体粗细 */
+                  }
+                  
+                  /* 上标数字样式优化 */
+                  .author-names sup, .affiliations sup {
+                    font-size: 0.75em !important;                          /* 上标字体大小 */
+                    vertical-align: super !important;                      /* 上标位置 */
+                    color: #2563eb !important;                             /* 蓝色上标 */
+                    font-weight: 700 !important;                           /* 粗体上标 */
+                  }
+                  
+                  /* 响应式调整 */
+                  @media (max-width: 768px) {
+                    .author-names {
+                      font-size: 1.2rem !important;                        /* 移动端稍小一些 */
+                      line-height: 1.8 !important;                         /* 增加行高 */
+                    }
+                    
+                    .affiliations {
+                      font-size: 1rem !important;                          /* 移动端机构信息 */
+                      line-height: 1.7 !important;                         /* 增加行高 */
+                    }
+                    
+                    .contact-info {
+                      font-size: 1rem !important;                          /* 移动端联系信息 */
+                    }
+                  }
+                  
+                  @media (max-width: 480px) {
+                    .author-names {
+                      font-size: 1.1rem !important;                        /* 小屏幕进一步缩小 */
+                    }
+                    
+                    .affiliations {
+                      font-size: 0.95rem !important;                       /* 小屏幕机构信息 */
+                    }
+                    
+                    .contact-info {
+                      font-size: 0.9rem !important;                        /* 小屏幕联系信息 */
+                    }
+                  }
+                </style>
                 <div class="hero-image">
-                    <img src="assets/images/framework.png" alt="CoReVLA Framework Overview" class="framework-img">
+                    <img src="assets/images/CoReVLA_framework.png" alt="CoReVLA Framework Overview" class="framework-img">
                 </div>
+                
+                <!-- 框架图片样式调整 - 让图片更大 -->
+                <style>
+                  .hero-image {
+                    max-width: 1400px !important;                           /* 增加容器最大宽度到1200px */
+                    width: 100% !important;                                 /* 宽度占满父容器 */
+                    margin: 2rem auto !important;                           /* 上下边距2rem，左右居中 */
+                  }
+                  
+                  .framework-img {
+                    max-width: 100% !important;                             /* 图片占满容器宽度 */
+                    width: 100% !important;                                 /* 确保图片宽度100% */
+                    height: auto !important;                                /* 高度自动，保持纵横比 */
+                    border-radius: 15px !important;                         /* 增加圆角到15px */
+                    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15) !important; /* 增强阴影效果 */
+                    display: block !important;                              /* 块级显示 */
+                  }
+                  
+                  /* 响应式调整 */
+                  @media (max-width: 768px) {
+                    .hero-image {
+                      max-width: 100% !important;                          /* 移动端占满屏幕宽度 */
+                      margin: 1.5rem auto !important;                      /* 减少移动端上下边距 */
+                    }
+                    
+                    .framework-img {
+                      border-radius: 12px !important;                      /* 移动端稍小的圆角 */
+                      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12) !important; /* 移动端稍弱的阴影 */
+                    }
+                  }
+                </style> 
 
                 <div class="hero-buttons">
                     <a href="https://arxiv.org/abs/2509.15968" class="btn btn-primary" target="_blank">
@@ -77,10 +226,7 @@
                     <a href="https://github.com/FanGShiYuu/CoReVLA" class="btn btn-secondary">
                         <i class="fab fa-github"></i> Code
                     </a>
-                    <a href="#download" class="btn btn-secondary">
-                        <i class="fas fa-database"></i> Download
-                    </a>
-                    <a href="#checkpoints" class="btn btn-secondary">
+                    <a href="#https://github.com/FanGShiYuu/CoReVLA/tree/main/checkpoint" class="btn btn-secondary">
                         <i class="fa-solid fa-file"></i> CheckPoints
                     </a>
                 </div>
@@ -88,87 +234,38 @@
         </div>
     </section>
 
-    <!-- Case-study Section -->
-    <section id="casestudy" class="section">
-      <div class="container">
-        <h2 class="section-title">Case Study & Analysis</h2>
-
-        <!-- 主视频 -->
-        <div class="main-video">
-          <video controls>
-            <source src="assets/videos/video_CXrORX_24.mp4" type="video/mp4">
-          </video>
-          <p class="video-caption">Main Video</p>
-        </div>
-
-        <!-- 六个视频 -->
-        <div class="video-grid">
-          <div class="video-wrapper">
-            <video controls>
-              <source src="assets/videos/intersection_left.mp4" type="video/mp4">
-            </video>
-            <p class="video-caption">Intersection</p>
-          </div>
-          <div class="video-wrapper">
-            <video controls>
-              <source src="assets/videos/roundabout_third.mp4" type="video/mp4">
-            </video>
-            <p class="video-caption">Roundabout</p>
-          </div>
-          <div class="video-wrapper">
-            <video controls>
-              <source src="assets/videos/in_ramp.mp4" type="video/mp4">
-            </video>
-            <p class="video-caption">In Ramp</p>
-          </div>
-          <div class="video-wrapper">
-            <video controls>
-              <source src="assets/videos/intersection_right.mp4" type="video/mp4">
-            </video>
-            <p class="video-caption">Intersection</p>
-          </div>
-          <div class="video-wrapper">
-            <video controls>
-              <source src="assets/videos/intersection_straight.mp4" type="video/mp4">
-            </video>
-            <p class="video-caption">Intersection</p>
-          </div>
-          <div class="video-wrapper">
-            <video controls>
-              <source src="assets/videos/roundabout_second.mp4" type="video/mp4">
-            </video>
-            <p class="video-caption">Roundabout</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
     <!-- Abstract Section -->
     <section id="abstract" class="section bg-light">
         <div class="container">
             <h2 class="section-title">Abstract</h2>
             <div class="abstract-content">
                 <p>
-                    End-to-end autonomous driving remains constrained by the need to generate multimodal actions, maintain temporal stability, and generalize across diverse scenarios. Existing methods often collapse multimodality, struggle with long-horizon consistency, or lack modular adaptability. This paper presents KDP, a knowledge-driven diffusion policy that integrates generative diffusion modeling with a sparse mixture-of-experts routing mechanism.
-                </p>
-                <p>
-                   The diffusion component generates temporally coherent and multimodal action sequences, while the expert routing mechanism activates specialized and reusable experts according to context, enabling modular knowledge composition.
-                </p>
-                <p>
-                    Extensive experiments across representative driving scenarios demonstrate that KDP achieves consistently higher success rates, reduced collision risk, and smoother control compared to prevailing paradigms. Ablation studies highlight the effectiveness of sparse expert activation and the Transformer backbone, and activation analyses reveal structured specialization and cross-scenario reuse of experts. These results establish diffusion with expert routing as a scalable and interpretable paradigm for knowledge-driven end-to-end autonomous driving.
+                Autonomous Driving (AD) systems have made notable progress, but their performance in long-tail, safety-critical scenarios remains limited. 
+                These rare cases contribute a disproportionate number of accidents. Vision-Language Action (VLA) models have strong reasoning abilities and offer a potential solution,
+                but their effectiveness is limited by the lack of high-quality data and inefficient learning in such conditions. To address these challenges, 
+                we propose CoReVLA, a continual learning end-to-end autonomous driving framework that improves the performance in long-tail scenarios through 
+                a dual-stage process of data Collection and behavior Refinement. First, the model is jointly fine-tuned on a mixture of open-source driving QA datasets, 
+                allowing it to acquire a foundational understanding of driving scenarios. Next, CoReVLA is deployed within the Cave Automatic Virtual Environment (CAVE) simulation platform,
+                  where driver takeover data is collected from real-time interactions. Each takeover indicates a long-tail scenario that CoReVLA fails to handle reliably. Finally, 
+                  the model is refined via Direct Preference Optimization (DPO), allowing it to learn directly from human preferences and thereby avoid reward hacking caused 
+                  by manually designed rewards. Extensive open-loop and closed-loop experiments demonstrate that the proposed CoReVLA model can accurately perceive driving scenarios 
+                  and make appropriate decisions. On the Bench2Drive benchmark, CoReVLA achieves a Driving Score (DS) of 72.18 and a Success Rate (SR) of 50%, 
+                  outperforming state-of-the-art methods by 7.96 DS and 15% SR under long-tail, safety-critical scenarios.
+                  Furthermore, case studies demonstrate the model’s ability to continually improve its performance in similar failure-prone scenarios 
+                  by leveraging past takeover experiences. 
                 </p>
                 <div class="key-contributions">
                     <h3>Key Contributions</h3>
                     <ul>
-                        <li><span class="highlight">A knowledge-driven end-to-end driving framework.</span> We remodel experts in MoE as abstract driving knowledge units, enabling modular and compositional policy learning beyond task-centric formulations.</li>
-                        <li><span class="highlight">Integration of diffusion modeling with expert routing.</span> We combine diffusion policies with MoE, which can maintain long-horizon consistency while adapting to diverse scenarios through modularity and selective reuse of knowledge.</li>
-                        <li><span class="highlight">Comprehensive empirical validation.</span> We demonstrate the effectiveness of the proposed approach on diverse driving scenarios, achieving superior safety, generalization, and efficiency compared with baselines.</li>
+                        <li><span class="highlight">Collection of visually grounded takeover data via HITL testing in the immersive CAVE platform.</span> The CAVE platform reconstructs 3D scenarios from trajectories, enabling end-to-end AD testing. During testing, long-tail scenarios where the model underperforms are proactively taken over by human drivers, yielding valuable takeover data including visual context, driver behaviors, and real-time attention.</li>
+                        <li><span class="highlight">Introduction of the DPO approach for efficient behavior refinement from sparse takeover data.</span> By contrasting suboptimal pre-intervention behaviors from models with high-quality human takeovers, the CoReVLA directly learns driver preferences, avoiding the pitfalls of indirect reward modeling and significantly improving learning efficiency.</li>
+                        <li><span class="highlight">Validation of CoReVLA in both open-loop and closed-loop settings.</span> We demonstrate effective scene understanding and decision-making capabilities. On the Bench2Drive benchmark, CoReVLA achieves a Driving Score of 72.18 and a Success Rate of 50\%, surpassing SOTA methods by 7.96 and 15\% respectively in long-tail, safety-critical scenarios. Case studies further verify its potential for cross-scenario generalization capability.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Method Section -->
     <section id="method" class="section">
@@ -176,72 +273,109 @@
             <h2 class="section-title">Methodology</h2>
             <div class="method-overview">
                 <div class="method-image">
-                    <img src="assets/images/Fig_framework.png" alt="VIPER-R1 Framework" class="method-diagram">
+                    <img src="assets/images/vla-model.png" alt="vla-model" class="vla-model">
                 </div>
+                <style>
+                  .vla-model {
+                    max-width: 100%;
+                    width: 1200px;
+                    height: auto;
+                    display: block;
+                    margin: 0 auto;
+                    border-radius: 12px;
+                    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+                  }
+                </style>
+                <p></p>
                 <div class="method-description">
                     <p>
-                        Framework of the proposed Knowledge-Driven Diffusion Policy. Scene inputs condition a diffusion-based policy to generate multi-modal, temporally coherent action sequences. A Mixture-of-Experts module refines these sequences by activating experts interpreted as abstract knowledge units, whose combinations express diverse and extensible driving skills such as interaction, maneuvering, and adaptation.
+                      To improve AV performance in long-tail scenarios, we propose CoReVLA, as illustrated in Figure. First, the Qwen2.5-
+                      VL-7B model is STF with a combination of open-source
+                      driving QA datasets to build a foundational understanding
+                      of driving tasks. It is then deployed in the CAVE platform, a
+                      closed-loop, HITL simulation environment, where long-tail
+                      failure cases requiring human takeovers are identified and
+                      collected. Finally, CoReVLA is refined via DPO using human feedback from takeover events, enabling the model to
+                      align with human preference and improve its generalization
+                      in long-tail scenarios
                     </p>
                 </div>
             </div>
 
             <div class="method-stages">
-                <!-- Stage 1: DP -->
+                <!-- Stage 1: SFT -->
                 <div class="stage">
                     <div class="stage-header">
                         <div class="stage-number">1</div>
-                        <h3>Diffusion Policy for Driving</h3>
+                        <h3> Open-loop fine tune with SFT</h3>
+                    </div>
+                    <div class="stage-content">
+                        <p>
+                          To adapt a general-purpose VLM to domain-specific reasoning tasks in autonomous driving, we performed supervised fine-tuning on the 
+                          Qwen2.5-VL-7B model using the constructed dataset. Specifically, we applied Low-Rank Adaptation (LoRA) to two key components of the model: 
+                          the vision projector and the LLM backbone. The former enhances the model's ability to align visual inputs with textual semantics, while the 
+                          latter improves its capacity to understand and reason about driving-related questions.
+                        </p>
+                    </div>
+                  </div>
+
+                <div class="hero-image">
+                    <img src="assets/images/vla-CAVE.png" alt="CAVE Overview" class="CAVE-img">
+                </div>
+
+                <style>
+                  .CAVE-img {
+                    max-width: 100%;
+                    width: 1200px;
+                    height: auto;
+                    display: block;
+                    margin: 0 auto;
+                    border-radius: 12px;
+                    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+                  }
+                </style>
+
+                <!-- Stage 2: DPO -->
+                <div class="stage">
+                    <div class="stage-header">
+                        <div class="stage-number">2</div>
+                        <h3> Close-loop fine tune with Collect and Refine</h3>
                     </div>
                     <div class="stage-content">
                         <div class="stage-steps">
                             <div class="step">
-                                <h4>Step 1: Forward Diffusion of Action Sequences</h4>
-                                <p>The forward diffusion process perturbs expert action sequences with gradually injected Gaussian noise to create supervised training targets, enabling the policy to learn how to recover clean and temporally coherent trajectories during the reverse denoising process.</p>
-                                <div class="formula">
-                                    <span class="formula">\( q(a_t \mid a_0) = \mathcal{N}\big(\sqrt{\bar{\alpha}_t} \, a_0, \, (1-\bar{\alpha}_t) I \big) \)</span>
-                                </div>
+                                <h4>Stage 1: Takeover data Collection</h4>
+                                <p>To collect driving data from long-tail scenarios, we consider human takeover events as representative failure cases that expose 
+                                  the limitations of the current model. Therefore, the intervention marks the boundary of the model’s capabilities and thus offers 
+                                  valuable guidance for enhancing robustness and safety.</p>
+                                <p>In our experiments, CoReVLA is integrated into the CAVE platform, where it interacts with background vehicles in real time. 
+                                  Its performance is continuously monitored throughout each test case. When CoReVLA exhibits suboptimal behavior that leads to 
+                                  deadlock or collision, the system switches to replay mode. In this mode, a safety driver wears a VR headset to experience an 
+                                  immersive driving environment and closely supervises CoReVLA's behavior. If a hazardous situation arises, the driver performs 
+                                  a manual takeover.</p>
                             </div>
                             <div class="step">
-                                <h4>Step 2: Reverse Denoising Process as Driving Policy</h4>
-                                <p>The reverse denoising process serves as the driving policy by iteratively transforming Gaussian noise into coherent, multi-modal action sequences conditioned on observations, ensuring temporal consistency and capturing the variability of human demonstrations.</p>
-                                <div class="formula">
-                                    <span class="formula">\( p_\theta(a_{t-1} \mid a_t, o_{t}) = \mathcal{N}\!\big(\mu_\theta(a_t, o_{t}, t), \, \Sigma_\theta(a_t, o_{t}, t)\big), \quad t = T,\ldots,1 \)</span>
-                                </div>
+                                <h4>Stage 2: VLA behavior Refinement</h4>
+                                <p>
+                                  In Stage 2, CoReVLA is refined using takeover data collected from the CAVE platform. Each sample consists of an action pair: 
+                                  the suboptimal behavior previously generated by the model and the corrective behavior performed by the safety driver in the 
+                                  same scenario. These comparisons encode implicit human preferences and serve as supervision for learning more desirable driving 
+                                  policies. To align the model with human intent, we adopt DPO, which fine-tunes the policy to favor actions consistent with human 
+                                  takeovers, thereby reducing repeated failures in similar high-risk situations.
+                                </p>
+                                <p>
+                                  Compared to other Reinforcement Learning from Human Feedback (RLHF) methods, such as PPO, DPO offers several advantages. 
+                                  It eliminates the need for an explicitly designed reward function, which is often difficult to define in complex long-tail scenarios. 
+                                  This avoids issues such as reward hacking and reduces reliance on manual reward engineering. Moreover, DPO can be trained directly on 
+                                  offline human demonstration data, substantially improving data efficiency. These properties make DPO particularly well-suited for 
+                                  learning from sparse long-tail events.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Stage 2: MoE -->
-                <div class="stage">
-                    <div class="stage-header">
-                        <div class="stage-number">2</div>
-                        <h3>MoE-based Knowledge Routing</h3>
-                    </div>
-                    <div class="stage-content">
-                        <p>
-                            The MoE-based knowledge routing extends the diffusion driving policy with modular experts and a top-K router, enabling dynamic composition of specialized knowledge units while ensuring balanced and efficient expert utilization.
-                        </p>
-
-
-                        <div class="sr2-steps">
-                            <div class="sr2-step">
-                                <strong>Step 1:</strong>
-                                Integration of MoE into Diffusion Policy:
-                                <span class="formula">\( \epsilon_{\theta}(a_t, o_t, t) = \sum_{i \in \mathcal{S}_t} g_{\phi}^{\,i}(o_t)\,\epsilon_{\theta_i}(a_t, o_t, t) \)</span>
-                            </div>
-                            <div class="sr2-step">
-                                <strong>Step 2:</strong>
-                                Routing Mechanism:
-                                <span class="formula">\( g_{\phi}(x) = \mathrm{softmax}(xW) \)</span>
-                            </div>
-                            <div class="sr2-step">
-                              <strong>Step 3:</strong>
-                              Training Objective with Routing Constraints:
-                              <span class="formula">\( \mathcal{L} = \mathcal{L}_{\text{denoise}} + \lambda_{\text{bal}}\,\mathcal{L}_{\text{balance}} - \gamma\, I(K,E) \)</span>
-                            </div>
-                        </div>
-                    </div>
+                
                 </div>
             </div>
         </div>
@@ -254,159 +388,103 @@
             
             <!-- Main Results -->
             <div class="results-section">
-                <h3>Main Results</h3>
-                <p>Comparison of security, efficiency, and comfort test results of different methods in multiple scenarios:</p>
-
-                <!-- DataTables 样式与脚本（CDN） -->
-                <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-                <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-                <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
+                <h3>Open-loop QA evaluations</h3>
+                <p>To evaluate whether CoReVLA can understand complex scenarios and complete driving tasks,
+                  we conduct both open-loop and closed-loop experiments. First, we compare its performance 
+                  with baselines using BLEU and ROUGE. Then, we integrate CoReVLA into the CAVE platform to 
+                  identify failure cases and apply DPO for behavior refinement. Finally, we benchmark against 
+                  SOTA methods under closed-loop settings using Bench2Drive, which consists of diverse and challenging long-tail scenarios.</p>
+                <div class="hero-image">
+                    <img src="assets/images/Open-loop.png" alt="Open-loop" class=Open-loop">
+                </div>
                 <style>
-                      /* 让表头/单元格更紧凑、居中，Ours 行轻微高亮 */
-                      #comparison_wrapper { margin-top: 1rem; }
-                      table#comparison { width: 100%; }
-                      table#comparison th, table#comparison td { text-align: center; vertical-align: middle; }
-                      tr.is-ours td { font-weight: 700; background: rgba(0, 123, 255, 0.06); }
-                      /* 横向滚动时，表格下方加点留白 */
-                      .dataTables_wrapper .dataTables_scroll { margin-bottom: 1rem; }
-                      /* caption 样式 */
-                      #comparison caption { caption-side: top; font-weight: 600; text-align: left; margin-bottom: .5rem; }
+                  .Open-loop {
+                    max-width: 100%;
+                    width: 1200px;
+                    height: auto;
+                    display: block;
+                    margin: 0 auto;
+                    border-radius: 12px;
+                    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+                  }
                 </style>
-
-                <div class="table-container">
-                  <table id="comparison" class="display nowrap">
-                    <thead>
-                      <tr>
-                        <th>Scenario</th>
-                        <th>Model</th>
-                        <th>Success Rate</th>
-                        <th>Collision Rate</th>
-                        <th>Average Episodic Reward</th>
-                        <th>Average Velocity (m/s)</th>
-                        <th>Acceleration Variance</th>
-                        <th>Average Completion Steps</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <!-- In Ramp -->
-                      <tr>
-                        <td>In Ramp</td><td>PPO-Lag</td><td>0.95</td><td>0.02</td><td>191.86</td><td>7.06</td><td>0.38</td><td>250.67</td>
-                      </tr>
-                      <tr>
-                        <td>In Ramp</td><td>RPID</td><td>0.99</td><td>0.01</td><td>196.27</td><td>7.47</td><td>0.38</td><td>242.57</td>
-                      </tr>
-                      <tr>
-                        <td>In Ramp</td><td>IBC</td><td>0.86</td><td>0.11</td><td>190.28</td><td>8.03</td><td>0.35</td><td>220.78</td>
-                      </tr>
-                      <tr class="is-ours">
-                        <td>In Ramp</td><td>Ours</td><td>1.00</td><td>0.00</td><td>197.52</td><td>8.61</td><td>0.37</td><td>210.99</td>
-                      </tr>
-
-                      <!-- Intersection -->
-                      <tr>
-                        <td>Intersection</td><td>PPO-Lag</td><td>0.90</td><td>0.10</td><td>116.79</td><td>6.30</td><td>0.45</td><td>172.02</td>
-                      </tr>
-                      <tr>
-                        <td>Intersection</td><td>RPID</td><td>0.63</td><td>0.37</td><td>98.57</td><td>7.28</td><td>0.39</td><td>125.42</td>
-                      </tr>
-                      <tr>
-                        <td>Intersection</td><td>IBC</td><td>0.68</td><td>0.31</td><td>98.94</td><td>5.75</td><td>0.35</td><td>163.48</td>
-                      </tr>
-                      <tr class="is-ours">
-                        <td>Intersection</td><td>Ours</td><td>0.94</td><td>0.06</td><td>121.54</td><td>6.34</td><td>0.45</td><td>174.05</td>
-                      </tr>
-
-                      <!-- Roundabout -->
-                      <tr>
-                        <td>Roundabout</td><td>PPO-Lag</td><td>0.64</td><td>0.18</td><td>142.77</td><td>6.56</td><td>0.45</td><td>203.43</td>
-                      </tr>
-                      <tr>
-                        <td>Roundabout</td><td>RPID</td><td>0.58</td><td>0.19</td><td>134.96</td><td>7.23</td><td>0.40</td><td>174.90</td>
-                      </tr>
-                      <tr>
-                        <td>Roundabout</td><td>IBC</td><td>0.70</td><td>0.22</td><td>139.71</td><td>6.41</td><td>0.35</td><td>245.98</td>
-                      </tr>
-                      <tr class="is-ours">
-                        <td>Roundabout</td><td>Ours</td><td>0.90</td><td>0.10</td><td>177.85</td><td>6.83</td><td>0.45</td><td>246.06</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <script>
-                  $(function () {
-                    $('#comparison').DataTable({
-                      // 体验优化
-                      paging: false,        // 这张表不大，关闭分页
-                      info: false,          // 隐藏“显示 x 到 y”信息
-                      order: [[0, 'asc'], [2, 'desc']], // 默认按场景排序，再按成功率降序
-                      searching: true,      // 开启搜索
-                      scrollX: true,        // 超宽时允许横向滚动
-                      // 数值列对齐/类型提示（可选）
-                      columnDefs: [
-                        { targets: [2,3,4,5,6,7], type: 'num', className: 'dt-body-center' }
-                      ],
-                      language: {
-                        search: 'Search：',
-                        zeroRecords: 'No matching data',
-                        emptyTable: 'The data in the table is empty'
-                      }
-                    });
-                  });
                 </script>
-
-            <!-- Comparison Chart -->
-            <div class="results-section">
-                <h3>Expert Activation Analysis</h3>
-                <div class="expert-grid">
-                    <div class="expert_time">
-                        <img src="assets/images/Fig_expert_time.png" alt="Fig_expert_time" class="chart-img">
-                        <p class="chart-caption">Temporal activation patterns of experts across driving scenarios</p>
-                    </div>
-                </div>
-                <div class="expert-grid">
-                    <div class="expert_time">
-                        <img src = "assets/images/Fig_expert_sce.png" alt = "Fig_expert_sce" class="chart-img">
-                        <p class="chart-caption">Scenario-level expert activation aggregated across episodes, where Experts 1 and 3 dominate in Merge, Experts 1 and 5 dominate in Intersection, and Experts 6 and 8 dominate in Roundabout, while Experts 2 and 4 exhibit occasional activation across multiple scenarios</p>
-                    </div>
-                </div>
+                <p>To assess the language understanding and reasoning capability of CoReVLA, 
+                  we first conduct open-loop QA evaluations across three representative datasets: 
+                  LingoQA, BDD, and HAD. As shown above, CoReVLA consistently achieves 
+                  higher BLEU and ROUGE scores across all datasets, indicating that SFT enhances the model's 
+                  ability to understand driving scenarios and make correct decisions, laying the groundwork for closed-loop evaluation.</p>
             </div>
 
-            <!-- Ablation Study -->
             <div class="results-section">
-                <div class="container">
-                <h3>Ablation Study</h3>
-                <p>Performance comparison of model variants across driving scenarios:</p>
-                <div class="ablation-grid">
-                    <div class="ablation-chart">
-                        <img src="assets/images/Fig_ablation.png" alt="Ablation Study Results" class="chart-img">
-                        <p class="chart-caption">Contribution of Transformer and MoE stages</p>
-                    </div>
-                    <div class="ablation-results">
-                        <div class="ablation-item">
-                            <h4>Baseline-U</h4>
-                            <p>Sce-1: 0.68 | Sce-2: 0.71 | Sce-3: 0.91</p>
-                        </div>
-                        <div class="ablation-item">
-                            <h4>Baseline-T (+ Transformer)</h4>
-                            <p>Sce-1: 0.76 | Sce-2: 0.84 | Sce-3: 0.98</p>
-                        </div>
-                        <div class="ablation-item">
-                            <h4>Ours (+ MoE)</h4>
-                            <p>Sce-1: 0.94 | Sce-2: 0.90 | Sce-3: 1.00</p>
-                        </div>
-                    </div>
+                <h3>Close-loop model performance evaluations</h3>
+                <div class="hero-image">
+                    <img src="assets/images/Close-loop.png" alt="Close-loop" class="Close-loop">
                 </div>
-                </div>
+                <style>
+                  .Close-loop {
+                    max-width: 100%;
+                    width: 1200px;
+                    height: auto;
+                    display: block;
+                    margin: 0 auto;
+                    border-radius: 12px;
+                    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+                  }
+                </style>
+                </script>
+                <p>The above table presents the performance of several representative methods from both small-scale task-specific models and 
+                  large-scale pretrained models on the Bench2Drive benchmark. Compared to existing SOTA approaches, our proposed CoReVLA 
+                  achieves the highest DS and SR, reaching 72.18 and 50.00%, respectively. This corresponds to an improvement of 7.96 points in DS 
+                  and a 14.99% increase in SR over the second-best method.</p>
+                <p>While CoReVLA demonstrates significant improvements in DS and SR, it does not outperform all baseline models in terms of efficiency and comfortness. 
+                  This is mainly because CoReVLA focuses on high-risk, long-tail driving scenarios where safety is prioritized during model refinement. 
+                  In the DPO-based HITL fine-tuning within the CAVE platform, drivers tend to exhibit cautious behavior, maintaining moderate speeds and 
+                  carefully observing their surroundings, rather than accelerating quickly to exit potentially dangerous situations. Additionally, 
+                  emergency braking is sometimes required for safety, which can negatively impact comfort-related metrics. This explains why, despite 
+                  a significant increase in SR, the improvement in DS is relatively modest. A similar pattern is observed in DriveTransformer-Large, 
+                  which is the second-best performing model.</p>
             </div>
+
+
+            <div class="results-section">
+                <h3>Close-loop model ability evaluations</h3>
+                <div class="hero-image">
+                    <img src="assets/images/Close-loop-ability.png" alt="Close-loop-ability" class="Close-loop-ability">
+                </div>
+                <style>
+                  .Close-loop-ability {
+                    max-width: 100%;
+                    width: 1200px;
+                    height: auto;
+                    display: block;
+                    margin: 0 auto;
+                    border-radius: 12px;
+                    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+                  }
+                </style>
+                </script>
+                <p>In addition to macroscopic metrics such as the SR, we further evaluated the model's diverse driving capabilities using the 
+                  capability assessment framework provided by Bench2Drive. Specifically, we tested its performance across multiple dimensions, including 
+                  Merging, Overtaking, Emergency Braking, Giving Way, and Traffic Sign compliance. As shown in the table above, it is evident that our 
+                  proposed CoReVLA achieves the highest overall capability score. Moreover, it outperforms existing methods in Merging, Overtaking, and 
+                  Emergency Braking. Thanks to the inclusion of numerous traffic signal-related training samples during the Supervised Fine-Tuning (SFT) 
+                  stage, CoReVLA also excels in Traffic Sign recognition.</p>
+                <p>However, a significant limitation of our approach lies in its complete lack of Give Way capability, indicating that CoReVLA fails to 
+                  cooperate with other vehicles during driving and primarily focuses on its own gains. This shortcoming may be attributed to the predominance 
+                  of "safe-critic" data used during the Direct Preference Optimization (DPO) fine-tuning stage, which leads the model to adopt an overly 
+                  conservative driving strategy. Consequently, this capability gap results in failures in the Yield Special-Vehicle Case. Therefore, 
+                  enhancing the model's ability to handle long-tail scenarios through cooperative behaviors and other diverse strategies remains a critical 
+                  issue to be addressed in future work.</p>
+            </div>
+            
         </div>
         </div>
     </section>
 
 
     <!-- Download Section -->
-    <section id="download" class="section bg-light">
+    <!-- <section id="download" class="section bg-light">
         <div class="container">
             <h2 class="section-title">Checkpoints And Datasets</h2>
 
@@ -432,7 +510,187 @@
                 <p class="download-info">Checkpoints and Dataset will be released upon paper acceptance</p>
             </div>
         </div>
+    </section> -->
+
+      <!-- Case-study Section -->
+    <section id="casestudy" class="section">
+      <div class="container">
+        <h2 class="section-title">Case Study & Analysis</h2>
+
+        <!-- 主视频 -->
+        <!-- <div class="main-video">
+          <video controls>
+            <source src="assets/videos/video_CXrORX_24.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Main Video</p>
+        </div> -->
+
+        <!-- 六个视频 -->
+        <style>
+          /* 视频网格容器样式 - 创建响应式网格布局 */
+          .video-grid {
+            display: grid;                                                    /* 使用CSS Grid布局系统 */
+            grid-template-columns: repeat(3, 1fr);                          /* 固定三列布局，每列等宽 */
+            gap: 30px;                                                       /* 网格项之间的间距30px */
+            margin-top: 2rem;                                                /* 顶部外边距32px (2rem = 32px) */
+            max-width: 2000px;                                               /* 容器最大宽度限制为1800px */
+            margin-left: auto;                                               /* 左边距自动 */
+            margin-right: auto;                                              /* 右边距自动，配合左边距实现水平居中 */
+            padding: 0 20px;                                                /* 左右内边距20px */
+          }
+          
+          /* 单个视频容器样式 - 视频卡片外观 */
+          .video-wrapper {
+            background: #f8f9fa;                                            /* 浅灰色背景色 */
+            border-radius: 15px;                                            /* 圆角半径15px，创建圆润外观 */
+            overflow: hidden;                                               /* 隐藏超出容器边界的内容 */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);                    /* 阴影效果：向下偏移8px，模糊半径25px，黑色15%透明度 */
+            transition: all 0.3s ease;                                      /* 所有属性变化的过渡动画，持续0.3秒，使用缓动效果 */
+            width: 100%;                                                    /* 宽度占满网格单元格 */
+            max-width: none;                                                /* 移除最大宽度限制 */
+            margin: 0;                                                      /* 移除外边距 */
+          }
+          
+          /* 鼠标悬停效果 - 增强交互体验 */
+          .video-wrapper:hover {
+            transform: translateY(-10px);                                   /* 悬停时向上移动10px */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);                   /* 悬停时阴影更深：向下15px，模糊35px，黑色25%透明度 */
+          }
+          
+          /* 视频元素样式 - 控制视频显示 */
+          .video-wrapper video {
+            width: 100%;                                                    /* 宽度占满父容器 */
+            aspect-ratio: 3/4;                                             /* 设置3:4宽高比，匹配720x960视频 */
+            object-fit: cover;                                              /* 覆盖整个容器，可能会轻微裁剪边缘 */
+            display: block;                                                 /* 块级元素显示，消除默认的行内间隙 */
+            border: none;                                                   /* 移除默认边框 */
+            outline: none;                                                  /* 移除焦点时的轮廓线 */
+            background: #000;                                               /* 黑色背景（理论上不应该显示） */
+          }
+          
+          /* 视频标题样式 - 视频下方的说明文字 */
+          .video-caption {
+            padding: 20px;                                                  /* 内边距20px，为文字提供呼吸空间 */
+            margin: 0;                                                      /* 外边距为0，避免额外间距 */
+            font-weight: 600;                                               /* 字体粗细600（半粗体），突出显示 */
+            font-size: 16px;                                                /* 字体大小16px，更大更清晰 */
+            color: #333;                                                    /* 深灰色文字，良好的可读性 */
+            text-align: center;                                             /* 文字居中对齐 */
+            background: white;                                              /* 白色背景 */
+            border-top: 2px solid #e9ecef;                                 /* 顶部2px灰色边框，与视频区域分隔 */
+            line-height: 1.4;                                              /* 行高1.4倍字体大小，提高可读性 */
+          }
+          
+          /* 大屏幕适配 (屏幕宽度小于等于1200px) */
+          @media (max-width: 1600px) {
+            .video-grid {
+              grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));  /* 减小每列最小宽度为260px */
+            }
+          }
+          
+          /* 中等屏幕适配 (屏幕宽度小于等于768px) - 平板设备 */
+          @media (max-width: 768px) {
+            .video-grid {
+              grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  /* 进一步减小每列最小宽度为250px */
+              gap: 20px;                                                    /* 减小网格间距为20px */
+            }
+            
+            .video-wrapper video {
+              min-height: 280px;                                            /* 调整视频最小高度为280px */
+              max-height: 400px;                                            /* 调整视频最大高度为400px */
+            }
+            
+            .video-caption {
+              padding: 15px;                                                /* 减小标题内边距为15px */
+              font-size: 13px;                                              /* 减小字体大小为13px */
+            }
+          }
+          
+          /* 小屏幕适配 (屏幕宽度小于等于480px) - 手机设备 */
+          @media (max-width: 480px) {
+            .video-grid {
+              grid-template-columns: 1fr;                                   /* 单列布局，一行只显示一个视频 */
+              gap: 15px;                                                    /* 进一步减小间距为15px */
+            }
+            
+            .video-wrapper video {
+              min-height: 250px;                                            /* 手机上视频最小高度250px */
+              max-height: 350px;                                            /* 手机上视频最大高度350px */
+            }
+          }
+        </style>
+        <div class="video-grid">
+          <div class="video-wrapper">
+            <video controls>
+              <source src="assets/videos/Rainy_Cut-in.mp4" type="video/mp4">
+            </video>
+            <p class="video-caption">Rainy Cut-in</p>
+          </div>
+          <div class="video-wrapper">
+            <video controls>
+              <source src="assets/videos/Stop-Sign_Left-Turn.mp4" type="video/mp4">
+            </video>
+            <p class="video-caption">Stop-Sign Left-Turn</p>
+          </div>
+          <div class="video-wrapper">
+            <video controls>
+              <source src="assets/videos/Four-Lane_Cut-in.mp4" type="video/mp4">
+            </video>
+            <p class="video-caption">Four Lane_Cut-in</p>
+          </div>
+          <div class="video-wrapper">
+            <video controls>
+              <source src="assets/videos/Yield_Special-Vehicle.mp4" type="video/mp4">
+            </video>
+            <p class="video-caption">Yield Special-Vehicle</p>
+          </div>
+          <div class="video-wrapper">
+            <video controls>
+              <source src="assets/videos/Blocked-Intersection.mp4" type="video/mp4">
+            </video>
+            <p class="video-caption">Blocked Intersection</p>
+          </div>
+          <div class="video-wrapper">
+            <video controls>
+              <source src="assets/videos/Dense_Left-Turn.mp4" type="video/mp4">
+            </video>
+            <p class="video-caption">Dense Left-Turn</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-study-text">
+      <p> </p>
+      <p> </p>
+      <p> </p>
+        <p>To provide an intuitive understanding of CoReVLA's performance, we selected several representative cases that highlight both its 
+        strengths and remaining limitations. The **Rainy Cut-in Case** demonstrates the model's capability to accurately identify anomalous 
+        objects and execute emergency braking even under perceptually degraded conditions. The **Stop-Sign Left-Turn Case** illustrates its 
+        ability to identify appropriate gaps in traffic and complete left-turn maneuvers safely.</p>
+      <p>However, several issues persist. In the **Four-Lane Cut-in Case**, although CoReVLA avoided collisions and ultimately reached the destination, 
+        it exhibited excessive emergency braking behavior. This appears to stem from an overrepresentation of "safe-critic" scenarios during training, 
+        which may have induced an overly conservative driving policy—analogous to a form of "PTSD" regarding potential risks. The model tends to initiate 
+        emergency braking upon detecting even minimal indications of lane intrusion by neighboring vehicles. This case explains why, despite achieving 
+        the highest success rate, our method does not attain top performance in terms of efficiency and comfort.</p>
+      <p>In the **Yield Special-Vehicle Case**, the model failed to recognize that an emergency vehicle behind it was operating under priority conditions, 
+        resulting in a failure to yield. The **Blocked Intersection Case** led to a collision due to insufficient utilization of the left-front camera data, 
+        preventing timely detection of a disabled vehicle obstructing the exit lane. Finally, in the **Dense Left-Turn Case**, CoReVLA was unable to identify a 
+        safe merging gap amid intense oncoming traffic, resulting in task failure. Nevertheless, the model's reasoning output correctly indicated that left-turning 
+        vehicles should yield to oncoming traffic—suggesting that, although the maneuver failed, the decision-making logic reflected a reasonable level of intelligence.</p>
+
+      </div>
+
+
+      <style>
+        .case-study-text {
+          max-width: 1400px; /* 限制最大宽度 */
+          margin: 0 auto;  /* 居中显示 */
+          text-align: justify; /* 两端对齐 */
+          line-height: 1.8; /* 增加行高提高可读性 */
+        }
+      </style>
     </section>
+
 
     <!-- Citation Section -->
     <section id="citation" class="section">
@@ -440,12 +698,15 @@
             <h2 class="section-title">Citation</h2>
             <div class="citation-box">
                 <pre><code>
-@article{xu2025kdp,
-          title   = {A Knowledge-Driven Diffusion Policy for End-to-End Autonomous Driving Based on Expert Routing},
-          author  = {Xu, Chengkai and Liu, Jiaqi and Guo, Yicheng and Hang, Peng and Sun, Jian},
-          journal = {arXiv preprint arXiv:2509.04853},
-          year    = {2025}
-        }
+            @misc{fang2025corevladualstageendtoendautonomous,
+                  title={CoReVLA: A Dual-Stage End-to-End Autonomous Driving Framework for Long-Tail Scenarios via Collect-and-Refine}, 
+                  author={Shiyu Fang and Yiming Cui and Haoyang Liang and Chen Lv and Peng Hang and Jian Sun},
+                  year={2025},
+                  eprint={2509.15968},
+                  archivePrefix={arXiv},
+                  primaryClass={cs.RO},
+                  url={https://arxiv.org/abs/2509.15968}, 
+            }
                 </code></pre>
                 <button class="copy-btn" onclick="copyBibTeX()">
                     <i class="fas fa-copy"></i> Copy BibTeX
@@ -459,8 +720,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>KDP-AD</h4>
-                    <p>A Knowledge-Driven Diffusion Policy for End-to-End Autonomous Driving Based on Expert Routing.</p>
+                    <h4>CoReVLA</h4>
+                    <p> A Dual-Stage End-to-End Autonomous Driving Framework for Long-Tail Scenarios via Collect-and-Refine.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Resources</h4>
@@ -472,11 +733,11 @@
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
-                    <p>For questions about this work, please contact the authors.</p>
+                    <p>For questions about this work, please contact fangshiyu@tongji.edu.cn.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 KDP-AD. All rights reserved.</p>
+                <p>&copy; 2025 CoReVLA. All rights reserved.</p>
             </div>
         </div>
     </footer>
