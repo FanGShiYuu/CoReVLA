@@ -4,6 +4,8 @@
 
 <img src="assets/CoReVLA_icon.png" width="1000">
 
+[**📄 Paper**](https://arxiv.org/abs/2509.15968) | [**🌐 Project Page**](https://fangshiyuu.github.io/CoReVLA/)
+
 </div>
 
 
