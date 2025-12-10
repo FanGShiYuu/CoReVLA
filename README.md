@@ -8,6 +8,8 @@
 
 </div>
 
+## Updates
+* 2025/12/10: Model weights are updated on Hugging Face:  [**Model**](https://huggingface.co/FanGShiYuu/CoReVLA)
 
 <!-- ## Introduction -->
 ## Abstract 🧾
