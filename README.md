@@ -121,6 +121,8 @@ model.save_pretrained("./merged_model")
 tokenizer.save_pretrained("./merged_model")
 ```
 
+OR you can directly download the model from Huggingface: [**Here**](https://huggingface.co/FanGShiYuu/CoReVLA)
+
 ### 4.Run Closed-loop Test
 Once the model and Bench2Drive are set up, run the following command for closed-loop testing:
 ```bash
